@@ -2,7 +2,7 @@
 
 ## Get your tor private key
 
-No idea how to get them, but they look like this:
+The easiest way to get your tor hostname and private key is to just start tor from the commandline somewhere, and search the tor directories for the hostname/private_key files.
 
 ```rsa
 -----BEGIN RSA PRIVATE KEY-----
@@ -12,23 +12,36 @@ blablabla
 
 ## Create environment file
 
+First get the latest tor version using this script:
+https://github.com/cmehay/docker-tor-hidden-service/blob/master/last_tor_version.sh
+
+Create the .env file:
+
 ```bash
 touch .env
 ```
+
+Fill it in with your preferences:
 
 ```properties
 RPC_USER=myname
 RPC_PASSWORD=5recgonbenuu446
 BTC_DATA_DIR=./bitcoindata
+TOR_VERSION=?????
 ```
 
 ## Audit docker-compose file
 
-* Check both images if they are the latest versions.
-* Check that the secrets file points to the correct private key file
+* Check if the bitcoin image is the current latest version.
+* Check that the secrets file points to your private key file
 
 ## Run
 
 ```bash
 docker-compose up -d
 ```
+
+## References
+
+* Tor hidden service: https://github.com/cmehay/docker-tor-hidden-service
+* Bitcoin core: https://github.com/ruimarinho/docker-bitcoin-core
