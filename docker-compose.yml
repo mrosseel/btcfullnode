@@ -49,4 +49,4 @@ volumes:
 
 secrets:
     btcd:
-        file: ./private_key_btc1
+        file: ${TOR_PRIVATE_KEY_FILE}
