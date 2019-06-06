@@ -38,7 +38,7 @@ services:
             # Set mapping ports
             BTCD_TOR_SERVICE_HOSTS: 8333:btcd:8333
             BTCD_TOR_SERVICE_VERSION: '2'
-            HELLO_TOR_SERVICE_HOSTS: 8080:hello:8080
+            HELLO_TOR_SERVICE_HOSTS: 8080:hello:80
             HELLO_TOR_SERVICE_VERSION: '2'
 
         # Keep keys in volumes
@@ -49,6 +49,8 @@ services:
         secrets:
         - source: btcd
           target: btcd
+        - source: hello
+          target: hello
 
 volumes:
     tor-keys:
@@ -56,4 +58,6 @@ volumes:
 
 secrets:
     btcd:
+        file: ${TOR_PRIVATE_KEY_FILE}
+    hello:
         file: ${TOR_PRIVATE_KEY_FILE}
