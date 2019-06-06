@@ -24,15 +24,22 @@ services:
         volumes:
             - ${BTC_DATA_DIR}:/home/bitcoin/.bitcoin/
 
+    hello:
+        image: tutum/hello-world
+        hostname: hello
+
     tor:
         image: goldy/tor-hidden-service:$TOR_VERSION
         container_name: tor
         links:
             - btcd
+            - hello
         environment:
             # Set mapping ports
             BTCD_TOR_SERVICE_HOSTS: 8333:btcd:8333
             BTCD_TOR_SERVICE_VERSION: '2'
+            HELLO_TOR_SERVICE_HOSTS: 8080:hello:8080
+            HELLO_TOR_SERVICE_VERSION: '2'
 
         # Keep keys in volumes
         volumes:
@@ -49,4 +56,4 @@ volumes:
 
 secrets:
     btcd:
-        file: ./private_key_btc1
+        file: ${TOR_PRIVATE_KEY_FILE}
