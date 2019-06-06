@@ -2,7 +2,7 @@
 
 ## Get your tor private key
 
-The easiest way to get your tor hostname and private key is to just start tor from the commandline somewhere, and search the tor directories for the hostname/private_key files.
+If you don't already have a tor private key, the easiest way is to just start tor from the commandline somewhere, and search the tor directories for the hostname/private_key files.
 
 ```rsa
 -----BEGIN RSA PRIVATE KEY-----
@@ -41,6 +41,14 @@ TOR_PRIVATE_KEY_FILE=./private_key_blablabla
 ```bash
 docker-compose up -d
 ```
+
+Check your onion hostname:
+
+```bash
+docker exec -ti tor onions
+```
+
+
 
 ## References
 
