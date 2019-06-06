@@ -32,6 +32,7 @@ services:
         environment:
             # Set mapping ports
             BTCD_TOR_SERVICE_HOSTS: 8333:btcd:8333
+            BTCD_TOR_SERVICE_VERSION: '2'
 
         # Keep keys in volumes
         volumes:
@@ -41,7 +42,6 @@ services:
         secrets:
         - source: btcd
           target: btcd
-          mode: 0400
 
 volumes:
     tor-keys:

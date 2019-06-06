@@ -21,13 +21,14 @@ Create the .env file:
 touch .env
 ```
 
-Fill it in with your preferences:
+Edit the .env file and add your preferences:
 
 ```properties
 RPC_USER=myname
 RPC_PASSWORD=5recgonbenuu446
 BTC_DATA_DIR=./bitcoindata
 TOR_VERSION=?????
+TOR_PRIVATE_KEY_FILE=./private_key_blablabla
 ```
 
 ## Audit docker-compose file
