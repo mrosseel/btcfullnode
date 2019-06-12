@@ -27,6 +27,7 @@ services:
     tor:
         image: goldy/tor-hidden-service:$TOR_VERSION
         container_name: tor
+        restart: unless-stopped
         links:
             - btcd
         environment:
