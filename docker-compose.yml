@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
     btcd:
-        image: ruimarinho/bitcoin-core:0.18
+        image: ruimarinho/bitcoin-core:0.21
         container_name: btcd
         hostname: btcd
         restart: unless-stopped
@@ -11,6 +11,7 @@ services:
             -rpcport=8332
             -server=1
             -txindex=1
+            -peerbloomfilters=1
             -dbcache=1000
             -maxconnections=800
             -timeout=30000
