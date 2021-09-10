@@ -36,14 +36,16 @@ services:
             BTCD_TOR_SERVICE_HOSTS: 8333:btcd:8333
             BTCD_TOR_SERVICE_VERSION: '2'
 
+            BTCD3_TOR_SERVICE_HOSTS: 8333:btcd:8333
+            BTCD3_TOR_SERVICE_VERSION: '3'
         # Keep keys in volumes
         volumes:
         - tor-keys:/var/lib/tor/hidden_service/
 
         # Set secret for key, use the same name as the service
         secrets:
-        - source: btcd
-          target: btcd
+          - btcd
+          - btcd3
 
 volumes:
     tor-keys:
@@ -52,3 +54,6 @@ volumes:
 secrets:
     btcd:
         file: ${TOR_PRIVATE_KEY_FILE}
+    btcd3:
+        file: ${TOR_PRIVATE_KEY_V3_FILE}
+
